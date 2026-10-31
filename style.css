@@ -1540,3 +1540,26 @@ h4,
     padding: 0 10px !important;
   }
 }
+
+/* --- PERBAIKAN FOTO EDUCATION TERPOTONG DI HP --- */
+@media (max-width: 768px) {
+  .edu-photo-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 20px auto 0 !important;
+    text-align: center !important;
+    overflow: hidden !important;
+  }
+
+  .edu-photo {
+    width: 100% !important;
+    max-width: 320px !important;
+    /* Membatasi lebar maksimal agar pas di tengah */
+    height: auto !important;
+    transform: scale(1) !important;
+    /* Mematikan efek zoom paksa */
+    margin: 0 auto !important;
+    display: block !important;
+  }
+}
