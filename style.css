@@ -401,12 +401,10 @@ h4,
 
 .hero-portrait {
   width: 100%;
-  /* Wajib 100% agar pas di dalam kontainer */
   height: 100%;
   object-fit: cover;
   object-position: center 78%;
   transform: scale(1.85);
-  /* Naikkan sedikit dari 1.72 jika ingin lebih besar */
   transform-origin: center 72%;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
   position: relative;
@@ -431,8 +429,6 @@ h4,
   z-index: 1;
 }
 
-/* Floating Badges */
-/* Tambahkan white-space agar teks tidak turun ke bawah */
 .floating-badge {
   position: absolute;
   background: rgba(255, 255, 255, 0.95);
@@ -448,20 +444,16 @@ h4,
   z-index: 3;
   animation: float 4s ease-in-out infinite;
   white-space: nowrap;
-  /* Tambahan wajib agar teks "Saya Vira Mahdalena" tidak terpotong ke bawah */
 }
 
-/* Geser posisi ke dalam agar tidak terpotong bingkai */
 .floating-badge.badge-left {
   top: 20%;
   left: 20px;
-  /* Diubah dari -20px menjadi 20px (atau nilai positif lainnya) */
 }
 
 .floating-badge.badge-right {
   bottom: 25%;
   right: 20px;
-  /* Diubah dari -10px menjadi 20px (atau nilai positif lainnya) */
   animation-delay: -2s;
 }
 
@@ -674,37 +666,29 @@ h4,
   line-height: 1.3;
 }
 
-/* Menghilangkan bingkai dan memperluas area foto */
 .edu-photo-wrap {
   position: relative;
   text-align: center;
   max-width: 500px;
-  /* Naikkan angka ini (misal 550px atau 600px) agar area foto lebih besar */
   width: 100%;
   height: auto;
   margin: 0 auto;
-
-  /* Kode di bawah ini untuk menghilangkan bingkai */
   border: none;
   box-shadow: none;
   background: transparent;
   overflow: visible;
 }
 
-/* Mengatur foto agar membesar tanpa bingkai */
 .edu-photo {
   width: 200%;
   height: auto;
   display: block;
   margin: 0 auto;
   transform: scale(1.3);
-  /* Naikkan angka ini (misal 1.4 atau 1.5) untuk memperbesar foto (zoom) */
   transition: transform 0.5s ease;
   filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
-  /* Memberikan sedikit bayangan langsung pada subjek foto */
 }
 
-/* Efek hover (opsional) */
 .edu-photo-wrap:hover .edu-photo {
   transform: scale(1.3);
 }
@@ -809,7 +793,6 @@ h4,
   display: block;
 }
 
-/* Desain Grid untuk Tools Manual */
 .tools-items-grid {
   display: flex;
   flex-wrap: wrap;
@@ -837,7 +820,6 @@ h4,
   font-size: 1.25rem;
 }
 
-/* Efek saat kursor diarahkan ke kotak tool */
 .tool-item:hover {
   background: var(--color-green);
   color: #fff;
@@ -861,19 +843,15 @@ h4,
 .work-intro-grid {
   display: grid;
   grid-template-columns: 1fr;
-  /* Mengubah dari dua kolom (1.2fr 0.8fr) menjadi satu kolom penuh */
   align-items: center;
 }
 
 .work-intro-title {
   font-size: clamp(2.5rem, 6vw, 5rem);
-  /* Angka 9vw dan 8.5rem dikecilkan agar tidak kepanjangan */
   line-height: 0.95;
-  /* Sedikit direnggangkan agar baris atas dan bawah tidak terlalu menempel */
   color: var(--color-white);
   margin-bottom: 20px;
   overflow-wrap: break-word;
-  /* Mencegah teks bablas keluar dari batas kontainernya */
 }
 
 .work-intro-image-wrap {
@@ -1367,12 +1345,13 @@ h4,
 }
 
 /* ========================================================
-   RESPONSIVE DESIGN (TABLET & MOBILE)
+   RESPONSIVE DESIGN (TABLET & MOBILE FIXES)
    ======================================================== */
+
+/* TABLET (Max 1024px) */
 @media (max-width: 1024px) {
   .hero-top-banner {
     text-align: center;
-    margin-bottom: 24px;
   }
 
   .hero-top-banner .tag-badge {
@@ -1381,12 +1360,12 @@ h4,
 
   .hero-main-title {
     text-align: center;
-    font-size: clamp(2.4rem, 8.5vw, 5.5rem);
   }
 
   .hero-content {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 30px;
   }
 
   .hero-headline-wrap {
@@ -1400,22 +1379,14 @@ h4,
   }
 
   .about-grid,
-  .education-grid,
-  .work-intro-grid {
+  .education-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
-  .about-image-card {
-    max-width: 440px;
-    margin: 0 auto;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-grid {
+  .skills-grid,
+  .gallery-grid,
+  .certs-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1423,32 +1394,52 @@ h4,
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
   }
-
-  .certs-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
+/* SMARTPHONE (Max 768px) */
 @media (max-width: 768px) {
-  .hero-main-title {
-    font-size: clamp(2rem, 9.5vw, 3.8rem);
+
+  /* FIX 1: Semua Judul raksasa dikecilkan ukurannya agar tidak mendesak layar */
+  .hero-main-title,
+  .about-title,
+  .education-title,
+  .section-title-large,
+  .work-intro-title,
+  .thankyou-title {
+    font-size: clamp(1.8rem, 11vw, 2.5rem) !important;
+    word-break: break-word;
+    width: 100%;
   }
 
+  .hero-subdesc {
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  /* FIX 2: Memastikan Container Gambar proporsional */
   .hero-image-wrap {
-    height: 420px;
-    max-width: 340px;
-  }
-
-  .edu-photo-wrap {
-    height: 440px;
-    max-width: 340px;
+    height: auto;
+    aspect-ratio: 4/5;
+    max-height: 400px;
+    width: 100%;
+    margin-top: 20px;
   }
 
   .work-intro-image-wrap {
-    height: 420px;
-    max-width: 340px;
+    height: auto;
+    aspect-ratio: 4/5;
+    max-height: 380px;
   }
 
+  /* Badge tidak keluar jalur */
+  .floating-badge {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    white-space: normal;
+  }
+
+  /* Navigasi */
   .navbar {
     padding: 10px 18px;
     width: calc(100% - 24px);
@@ -1461,13 +1452,9 @@ h4,
     left: 12px;
     right: 12px;
     background: rgba(22, 28, 25, 0.98);
-    backdrop-filter: blur(16px);
     border-radius: 20px;
     padding: 24px;
     flex-direction: column;
-    gap: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
     display: none;
   }
 
@@ -1483,8 +1470,9 @@ h4,
     display: block;
   }
 
+  /* FIX 3: Ruang padding diperkecil agar konten/kartu punya ruang lebih lebar di HP */
   .section {
-    padding: 70px 20px;
+    padding: 60px 15px;
   }
 
   .about-card,
@@ -1492,19 +1480,44 @@ h4,
   .skill-card,
   .tools-banner,
   .contact-card-main {
-    padding: 26px 20px;
+    padding: 24px 16px;
   }
 
-  .about-highlights {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .contact-channels-grid {
-    grid-template-columns: 1fr;
-  }
-
+  /* Grid di HP Menjadi 1 Kolom */
+  .contact-channels-grid,
   .gallery-sub-grid {
     grid-template-columns: 1fr;
+  }
+
+  .tools-items-grid {
+    gap: 8px;
+  }
+
+  .tool-item {
+    flex: 1 1 calc(50% - 10px);
+    justify-content: center;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    text-align: center;
+  }
+}
+
+/* SMARTPHONE KECIL (Max 480px) */
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .edu-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
   }
 }
