@@ -1521,3 +1521,22 @@ h4,
     gap: 10px;
   }
 }
+
+/* --- PERBAIKAN FINAL TEKS JUDUL TERPOTONG DI HP --- */
+@media (max-width: 768px) {
+
+  .hero-main-title,
+  .about-title,
+  .education-title,
+  .section-title-large,
+  .thankyou-title,
+  .work-intro-title {
+    font-size: 12vw !important;
+    white-space: normal !important;
+    letter-spacing: 0px !important;
+    word-break: break-word !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 0 10px !important;
+  }
+}
